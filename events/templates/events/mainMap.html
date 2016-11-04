@@ -1,0 +1,36 @@
+{% include "events/sub_loadleaflet.html" %} 
+
+<body>
+
+	{% include "events/sub_loadmap.html" %} 
+
+	<script>
+	var markerClusters = L.markerClusterGroup();
+	</script>
+
+	{% if all_events %}
+		{% for concert in all_events %}
+			{% include "events/sub_addmarker.html" %} 
+		{% endfor %}
+	{% endif %}
+
+	<script>
+		mymap.addLayer(markerClusters);
+	</script>
+
+	<h2>Lista wydarzeń:</h2>
+	<p>{% for band in distinct_band %}
+    	<a href="/details/band/{{band.title}}">[ {{band.title}} ]</a>
+	{% endfor %}</p>
+
+	<h2>Lista miast:</h2>
+	<p>{% for city in distinct_city %}
+    	<a href="/details/city/{{city.city}}">[ {{ city.city }} ]</a>
+	{% endfor %}</p>
+
+	<h2>Lista krajów:</h2>
+	<p>{% for country in distinct_country %}
+    	<a href="/details/country/{{country.country}}">[ {{ country.country }} ]</a>
+	{% endfor %}</p>
+
+</body>

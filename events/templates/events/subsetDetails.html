@@ -1,0 +1,63 @@
+{% include "events/sub_loadleaflet.html" %}
+<body>
+
+	<style>
+	a{
+		display: inline-block;
+	}
+	</style>
+
+	{% include "events/sub_loadmap.html" %} 
+
+	<script>
+	var markerClusters = L.markerClusterGroup();
+	</script>
+
+	<h2>Kategoria: {{category}} <BR>Wartość:</BR> {{value}}</h2>
+	{% if data %}
+
+	    {% if category in categoryList %}
+	    <ul>
+		    {% for concert in data %}
+
+		    	{% if category == 'country' %}
+			    	{% if concert.country == value %}
+			    		{% include "events/sub_addmarker.html" %}
+			    		{% include "events/sub_detailsContent.html" %}
+				    {% endif %}
+
+				{% elif category == 'city' %}
+					{% if concert.city == value %}
+						{% include "events/sub_addmarker.html" %}
+						{% include "events/sub_detailsContent.html" %}
+					{% endif %}
+
+				{% elif category == 'band' %}
+					{% if concert.title == value %}
+						{% include "events/sub_addmarker.html" %}
+						{% include "events/sub_detailsContent.html" %}
+					{% endif %}			
+				{% endif %}
+
+		    {% endfor %}
+	    </ul>
+
+	    {% else %}
+	    	<p>Nieprawidlowa wartosc kategorii.</p>
+	    	<p>Dopuszczalne wartosci to:</p>
+	    	<ul>
+	    		<li>band</li>
+	    		<li>city</li>
+	    		<li>country</li>
+	    	</ul>
+	    {% endif %}
+
+	{% else %}
+	    <p>No events found.</p>
+	{% endif %}
+
+	<script>
+		mymap.addLayer(markerClusters);
+	</script>
+
+</body>

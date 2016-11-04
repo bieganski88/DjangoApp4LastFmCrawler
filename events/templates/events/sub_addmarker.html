@@ -1,0 +1,12 @@
+<script>
+	var opis = '<strong>{{ concert.title }}</strong>\
+		<BR>Data: {{ concert.event_date|slice:":10" }}\
+		<BR>Miasto: {{concert.city}}\
+		<BR>Kraj: {{concert.country}}\
+		<BR>Lokal: {{concert.place}}\
+		<BR>LineUp: {{concert.lineup}}';
+	var longitude = '{{ concert.longitude }}';
+	var latitude = '{{ concert.latitude }}';
+	var m = L.marker([latitude, longitude]).bindPopup(opis);
+	markerClusters.addLayer(m);
+</script>

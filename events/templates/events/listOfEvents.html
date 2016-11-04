@@ -1,0 +1,10 @@
+{% if all_events %}
+    <ul>
+    {% for concert in all_events %}
+        <li>{{ concert.title }} // {{concert.event_date}}//
+        {{concert.place}} // {{concert.city}} // {{concert.country}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No events found.</p>
+{% endif %}
