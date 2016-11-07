@@ -1,0 +1,39 @@
+{% extends "events/base.html" %}
+
+{% block title %}
+	<title> [EventsMap] Mapa Template </title>
+{% endblock %}
+
+{% block bodyContent %}
+	<div class="container">
+		<div class="page-header">
+			<h3>PERSONALIZOWANA MAPA KONCERTOWA</h3>
+			<small>{% block subtitle %} Podtytuł {% endblock %}</small>
+		</div>
+
+		<div class="row">
+			{# laduje obiekt mapy leaflet #}
+			<div class="col-sm-6 col-xs-12" id="mapid" style="height: 70%"></div>
+			{% include "events/sub_loadmap.html" %} 
+
+			<script>
+			var markerClusters = L.markerClusterGroup();
+			</script>
+
+			{% block wczytywanieMarkerow %}
+			{% endblock %}
+
+			<div class="pre-scrollable col-sm-6 col-xs-12" style="max-height: 70%">
+				{% block content %}
+					<h2>Treść, treść, treść..</h2>
+					{% lorem 3 p %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+
+	<script>
+		mymap.addLayer(markerClusters);
+	</script>
+
+{% endblock %}

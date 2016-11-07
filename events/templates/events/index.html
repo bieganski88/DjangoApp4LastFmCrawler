@@ -1,2 +1,31 @@
-<h1>PERSONALIZOWANA MAPA KONCERTOWA</h1>
-<p>Tresc zostanie uzupelniona pozniej.</p>
+{% extends "events/base.html" %}
+
+{% block title %}
+	<title> [EventsMap] Startowa </title>
+{% endblock %}
+
+{% block bodyContent %}
+	<div class="container">
+		<div class="page-header">
+			<h3>PERSONALIZOWANA MAPA KONCERTOWA</h3>
+			<small>Strona startowa aplikacji.</small>
+		</div>
+
+		<div class="row">
+		  <div class="col-sm-4">
+		  	<h4>Spis koncertów</h4>
+		  	{% lorem 1 p %}
+		  </div>
+
+		  <div class="col-sm-4">
+		  	<h4>Mapa wydarzen</h4>
+		  	{% lorem 1 p %}		  	
+		  </div>
+
+		  <div class="col-sm-4">
+		  	<h4>O autorze</h4>
+		  	{% lorem 1 p %}
+		  </div>
+		</div>
+	</div>
+{% endblock %}

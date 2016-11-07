@@ -1,46 +1,72 @@
-{% include "events/sub_loadleaflet.html" %}
-<body>
+{% extends "events/baseMap.html" %}
 
-	<style>
-	a{
-		display: inline-block;
-	}
-	</style>
+{% block title %}
+	<title> [EventsMap] Szczegóły </title>
+{% endblock %}
 
-	{% include "events/sub_loadmap.html" %} 
+{% block subtitle %}
+	Rezultat filtrowania - zawiera wybrane wydarzenia muzyczne dla {{value}}.
+{% endblock %}
 
-	<script>
-	var markerClusters = L.markerClusterGroup();
-	</script>
-
-	<h2>Kategoria: {{category}} <BR>Wartość:</BR> {{value}}</h2>
+{% block content %}
 	{% if data %}
-
 	    {% if category in categoryList %}
-	    <ul>
-		    {% for concert in data %}
+	    <div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Wydarzenie</th>
+						<th>Data</th>
+						<th>Miejsce</th>
+						<th>Miasto</th>
+						<th>Kraj</th>
+					</tr>
+				</thead>
+				<tbody>
+				    {% for concert in data %}
+				    	{% if category == 'country' %}
+					    	{% if concert.country == value %}
+					    		{% include "events/sub_addmarker.html" %}
+					    		<tr>
+									<td style="width:25%">
+									<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
+								 	<td style="width:15%">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">{{concert.place}}</td>
+									<td style="width:20%"><a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%"><a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+								</tr>
+						    {% endif %}
 
-		    	{% if category == 'country' %}
-			    	{% if concert.country == value %}
-			    		{% include "events/sub_addmarker.html" %}
-			    		{% include "events/sub_detailsContent.html" %}
-				    {% endif %}
+						{% elif category == 'city' %}
+							{% if concert.city == value %}
+								{% include "events/sub_addmarker.html" %}
+					    		<tr>
+									<td style="width:25%">
+									<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
+								 	<td style="width:15%">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">{{concert.place}}</td>
+									<td style="width:20%"><a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%"><a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+								</tr>
+							{% endif %}
 
-				{% elif category == 'city' %}
-					{% if concert.city == value %}
-						{% include "events/sub_addmarker.html" %}
-						{% include "events/sub_detailsContent.html" %}
-					{% endif %}
-
-				{% elif category == 'band' %}
-					{% if concert.title == value %}
-						{% include "events/sub_addmarker.html" %}
-						{% include "events/sub_detailsContent.html" %}
-					{% endif %}			
-				{% endif %}
-
-		    {% endfor %}
-	    </ul>
+						{% elif category == 'band' %}
+							{% if concert.title == value %}
+								{% include "events/sub_addmarker.html" %}
+					    		<tr>
+									<td style="width:25%">
+									<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
+								 	<td style="width:15%">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">{{concert.place}}</td>
+									<td style="width:20%"><a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%"><a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+								</tr>
+							{% endif %}			
+						{% endif %}
+				    {% endfor %}
+				</tbody>
+			</table>
+		</div>
 
 	    {% else %}
 	    	<p>Nieprawidlowa wartosc kategorii.</p>
@@ -55,9 +81,4 @@
 	{% else %}
 	    <p>No events found.</p>
 	{% endif %}
-
-	<script>
-		mymap.addLayer(markerClusters);
-	</script>
-
-</body>
+{% endblock %}

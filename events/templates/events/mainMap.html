@@ -1,23 +1,23 @@
-{% include "events/sub_loadleaflet.html" %} 
+{% extends "events/baseMap.html" %}
 
-<body>
+{% block title %}
+	<title> [EventsMap] Mapa </title>
+{% endblock %}
 
-	{% include "events/sub_loadmap.html" %} 
+{% block subtitle %}
+	Mapa główna - zawiera wszystkie wydarzenia muzyczne.
+{% endblock %}
 
-	<script>
-	var markerClusters = L.markerClusterGroup();
-	</script>
-
+{% block wczytywanieMarkerow %}
+	{# dodawanie znacznikow #}
 	{% if all_events %}
 		{% for concert in all_events %}
 			{% include "events/sub_addmarker.html" %} 
 		{% endfor %}
 	{% endif %}
+{% endblock %}
 
-	<script>
-		mymap.addLayer(markerClusters);
-	</script>
-
+{% block content %}
 	<h2>Lista wydarzeń:</h2>
 	<p>{% for band in distinct_band %}
     	<a href="/details/band/{{band.title}}">[ {{band.title}} ]</a>
@@ -32,5 +32,4 @@
 	<p>{% for country in distinct_country %}
     	<a href="/details/country/{{country.country}}">[ {{ country.country }} ]</a>
 	{% endfor %}</p>
-
-</body>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load leaflet_tags %}
+{% load static %}
+
+<html>
+	<head>
+		{% block title %}
+			<title>Template do zmiany</title>
+		{% endblock %}
+		<meta charset="utf-8" />
+
+		{# ladowanie leaflet #}
+		{% leaflet_js %}
+	    {% leaflet_css %}
+
+	    {# ladowanie  markercluster - zapewnia clustering znacznikow na mapie #}
+	    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+	    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+
+	    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+	    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
+
+	    {# ladowanie bootstrapa #}
+	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+		{% block extraHead %}
+		{% endblock %}
+	</head>
+	
+	<body>
+		{% block bodyContent %}
+		{% endblock %}
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+
+	<hr>
+
+	<footer>
+		<div class="container">
+			<p>&copy; Przemysław Biegański - wszelkie prawa zastrzeżone ({% now 'Y' %})</p>
+		</div>
+	</footer>
+</html>

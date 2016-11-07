@@ -1,10 +1,44 @@
-{% if all_events %}
-    <ul>
-    {% for concert in all_events %}
-        <li>{{ concert.title }} // {{concert.event_date}}//
-        {{concert.place}} // {{concert.city}} // {{concert.country}}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No events found.</p>
-{% endif %}
+{% extends "events/base.html" %}
+
+{% block title %}
+	<title> [EventsMap] Spis </title>
+{% endblock %}
+
+{% block bodyContent %}
+	<div class="container">
+		<div class="page-header">
+			<h3>PERSONALIZOWANA MAPA KONCERTOWA</h3>
+			<small>Spis wydarzeń muzycznych.</small>
+		</div>
+
+		{% if all_events %}
+			<table class="table table-hover table-condensed ">
+				<thead>
+					<tr>
+						<th>Wydarzenie</th>
+						<th>Data</th>
+						<th>Miejsce</th>
+						<th>Miasto</th>
+						<th>Kraj</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for concert in all_events %}
+						<tr>
+							<td style="width:25%">
+							<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
+							<td style="width:10%">{{ concert.event_date|slice:":10" }}</td>
+							<td style="width:25%">{{ concert.place }}</td>
+							<td style="width:20%">
+							<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+							<td style="width:20%">
+							<a href="/../../details/country/{{concert.country}}">{{concert.country}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+		    <p>No events found.</p>
+		{% endif %}
+	</div>
+{% endblock %}
