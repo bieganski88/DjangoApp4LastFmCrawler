@@ -23,7 +23,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Wydarzenie</th>
+						<th>Artysta</th>
 						<th>Data</th>
 						<th>Miejsce</th>
 						<th>Miasto</th>
@@ -37,11 +37,15 @@
 					    		{% include "events/sub_addmarker.html" %}
 					    		<tr>
 									<td style="width:25%">
-									<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
-								 	<td style="width:15%">{{concert.event_date|slice:":10" }}</td>
-									<td style="width:20%">{{concert.place}}</td>
-									<td style="width:20%"><a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
-									<td style="width:20%"><a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+									<a href="/../../details/band/{{concert.artist}}">{{ concert.artist }}</a></td>
+								 	<td style="width:15%">
+								 	<a href="/../../details/byDate/{{concert.event_date}}">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">
+									<a href="/../../details/place/{{concert.place}}">{{concert.place}}</td>
+									<td style="width:20%">
+									<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%">
+									<a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
 								</tr>
 						    {% endif %}
 
@@ -50,26 +54,69 @@
 								{% include "events/sub_addmarker.html" %}
 					    		<tr>
 									<td style="width:25%">
-									<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
-								 	<td style="width:15%">{{concert.event_date|slice:":10" }}</td>
-									<td style="width:20%">{{concert.place}}</td>
-									<td style="width:20%"><a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
-									<td style="width:20%"><a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+									<a href="/../../details/band/{{concert.artist}}">{{ concert.artist }}</a></td>
+								 	<td style="width:15%">
+								 	<a href="/../../details/byDate/{{concert.event_date}}">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">
+									<a href="/../../details/place/{{concert.place}}">{{concert.place}}</td>
+									<td style="width:20%">
+									<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%">
+									<a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
 								</tr>
 							{% endif %}
 
 						{% elif category == 'band' %}
-							{% if concert.title == value %}
+							{% if concert.artist == value %}
 								{% include "events/sub_addmarker.html" %}
 					    		<tr>
 									<td style="width:25%">
-									<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
-								 	<td style="width:15%">{{concert.event_date|slice:":10" }}</td>
-									<td style="width:20%">{{concert.place}}</td>
-									<td style="width:20%"><a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
-									<td style="width:20%"><a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+									<a href="/../../details/band/{{concert.artist}}">{{ concert.artist }}</a></td>
+								 	<td style="width:15%">
+								 	<a href="/../../details/byDate/{{concert.event_date}}">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">
+									<a href="/../../details/place/{{concert.place}}">{{concert.place}}</td>
+									<td style="width:20%">
+									<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%">
+									<a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
 								</tr>
-							{% endif %}			
+							{% endif %}
+
+						{% elif category == 'byDate' %}
+							{% if concert.event_date == value %}
+								{% include "events/sub_addmarker.html" %}
+					    		<tr>
+									<td style="width:25%">
+									<a href="/../../details/band/{{concert.artist}}">{{ concert.artist }}</a></td>
+								 	<td style="width:15%">
+								 	<a href="/../../details/byDate/{{concert.event_date}}">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">
+									<a href="/../../details/place/{{concert.place}}">{{concert.place}}</td>
+									<td style="width:20%">
+									<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%">
+									<a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+								</tr>
+							{% endif %}
+
+						{% elif category == 'place' %}
+							{% if concert.place == value %}
+								{% include "events/sub_addmarker.html" %}
+					    		<tr>
+									<td style="width:25%">
+									<a href="/../../details/band/{{concert.artist}}">{{ concert.artist }}</a></td>
+								 	<td style="width:15%">
+								 	<a href="/../../details/byDate/{{concert.event_date}}">{{concert.event_date|slice:":10" }}</td>
+									<td style="width:20%">
+									<a href="/../../details/place/{{concert.place}}">{{concert.place}}</td>
+									<td style="width:20%">
+									<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
+									<td style="width:20%">
+									<a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
+								</tr>
+							{% endif %}
+
 						{% endif %}
 				    {% endfor %}
 				</tbody>

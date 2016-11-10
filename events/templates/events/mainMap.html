@@ -27,6 +27,7 @@
 
 {% block content %}
 <div class="panel-group" id="accordion">
+
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -42,6 +43,7 @@
 	  </div>
     </div>
   </div>
+
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -56,18 +58,35 @@
 		{% endfor %}</p></div>
     </div>
   </div>
-  <div class="panel panel-default">
+
+   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-        Lista krajów</a>
+        Lista klubów</a>
       </h4>
     </div>
     <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">
+		<p>{% for city in distinct_place %}
+			<a href="/details/place/{{city.place}}">[ {{ city.place }} ]</a>
+		{% endfor %}</p></div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+        Lista krajów</a>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
       <div class="panel-body"><p>{% for country in distinct_country %}
     	<a href="/details/country/{{country.country}}">[ {{ country.country }} ]</a>
 	{% endfor %}</p></div>
     </div>
   </div>
+
 </div>
 {% endblock %}

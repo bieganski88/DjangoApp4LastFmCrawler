@@ -16,14 +16,16 @@ def index(request):
 def mainMap(request):
 	# zapytania do bazy danych
 	all_events = MusicEvents.objects.all()
-	distinct_city = MusicEvents.objects.values('city').distinct()
-	distinct_country = MusicEvents.objects.values('country').distinct()
-	distinct_band = MusicEvents.objects.values('artist').distinct()
+	distinct_city = MusicEvents.objects.values('city').distinct().order_by('city')
+	distinct_country = MusicEvents.objects.values('country').distinct().order_by('country')
+	distinct_band = MusicEvents.objects.values('artist').distinct().order_by('artist')
+	distinct_place = MusicEvents.objects.values('place').distinct().order_by('place')
 
 	template = loader.get_template('events/mainMap.html')
 	context = {
 		'all_events' : all_events, 'distinct_city' : distinct_city,
 		'distinct_country' : distinct_country, 'distinct_band' : distinct_band,
+		'distinct_place' : distinct_place,
 	}
 	return HttpResponse(template.render(context, request))
 
@@ -39,7 +41,7 @@ def listOfEvents(request):
 
 def detailsView(request, category, value):
 	all_events = MusicEvents.objects.all()
-	categoryList = ['band', 'city', 'country']
+	categoryList = ['band', 'city', 'country', 'place', 'byDate']
 	template = loader.get_template('events/subsetDetails.html')
 	context = {
 		'category' : category, 'value' : value,

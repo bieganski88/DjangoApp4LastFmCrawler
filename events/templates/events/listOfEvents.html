@@ -13,7 +13,7 @@
 				<li class= "active"><a href="#">Spis koncertów</a></li>
 				<li><a href="/../../mainMap">Mapa wydarzeń</a></li>
 				<li class="nav-link disabled"><a href="#">Widok szczegółowy</a></li>
-				<li><a href="#">O autorze</a></li>
+				<li class="nav-link disabled"><a href="#">O autorze</a></li>
 			</ul>
 		</div>
 
@@ -34,7 +34,7 @@
 			<table id="mainTable" class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th>Wydarzenie</th>
+						<th>Wykonawca</th>
 						<th>Data</th>
 						<th>Miejsce</th>
 						<th>Miasto</th>
@@ -45,9 +45,11 @@
 					{% for concert in all_events %}
 						<tr>
 							<td style="width:25%">
-							<a href="/../../details/band/{{concert.title}}">{{ concert.title }}</a></td>
-							<td style="width:10%">{{ concert.event_date|slice:":10" }}</td>
-							<td style="width:25%">{{ concert.place }}</td>
+							<a href="/../../details/band/{{concert.artist}}">{{ concert.artist }}</a></td>
+							<td style="width:10%">
+							<a href="/../../details/byDate/{{concert.event_date}}">{{ concert.event_date|slice:":10" }}</a></td>
+							<td style="width:25%">
+							<a href="/../../details/place/{{concert.place}}">{{ concert.place }}</a></td>
 							<td style="width:20%">
 							<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
 							<td style="width:20%">
