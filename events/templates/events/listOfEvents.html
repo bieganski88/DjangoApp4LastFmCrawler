@@ -6,13 +6,39 @@
 
 {% block bodyContent %}
 	<div class="container">
+
+		<div class= "row">
+			<ul class="nav nav-tabs">
+				<li>
+				  <a href="/../../">Strona startowa</a>
+				</li>
+				<li class= "active">
+				  <a href="#">Spis koncertów</a>
+				</li>
+				<li>
+				  <a href="/../../mainMap">Mapa wydarzeń</a>
+				</li>
+				<li>
+				  <a href="#">O autorze</a>
+				</li>
+			</ul>
+		</div>
+
 		<div class="page-header">
 			<h3>PERSONALIZOWANA MAPA KONCERTOWA</h3>
 			<small>Spis wydarzeń muzycznych.</small>
 		</div>
 
+		<script>
+			$(document).ready(function() {
+			    $('#mainTable').DataTable({
+			    	"paging":   false,
+			    });
+			} );
+		</script>
+
 		{% if all_events %}
-			<table class="table table-hover table-condensed ">
+			<table id="mainTable" class="table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>Wydarzenie</th>
@@ -32,7 +58,7 @@
 							<td style="width:20%">
 							<a href="/../../details/city/{{concert.city}}">{{concert.city}}</a></td>
 							<td style="width:20%">
-							<a href="/../../details/country/{{concert.country}}">{{concert.country}}</td>
+							<a href="/../../details/country/{{concert.country}}">{{concert.country}}</a></td>
 						</tr>
 					{% endfor %}
 				</tbody>
@@ -41,4 +67,5 @@
 		    <p>No events found.</p>
 		{% endif %}
 	</div>
+
 {% endblock %}
