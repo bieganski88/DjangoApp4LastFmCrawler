@@ -1,0 +1,41 @@
+{% extends "events/base.html" %}
+
+{% block title %}
+	<title> [EventsMap] O autorze </title>
+{% endblock %}
+
+{% block bodyContent %}
+	<div class="container">
+
+		<div class= "row">
+			<ul class="nav nav-tabs">
+				<li ><a href="/../../">Strona startowa</a></li>
+				<li><a href="/../../listOfEvents">Spis koncertów</a></li>
+				<li><a href="/../../mainMap">Mapa wydarzeń</a></li>
+				<li class="nav-link disabled"><a href="#">Widok szczegółowy</a></li>
+				<li class="active"><a href="#">O autorze</a></li>
+			</ul>
+		</div>
+		
+		<div class= "row">
+			<div class="page-header">
+				<h3>PERSONALIZOWANA MAPA KONCERTOWA</h3>
+				<small>Informacje o autorze strony.</small>
+			</div>
+		</div>
+
+		<div class="row">
+		  <div class="col-sm-6">
+		  	<h4>Tu bedzie zdjęcie</h4>
+		  	{% lorem 1 p %}
+		  </div>
+
+		  <div class="col-sm-6">
+		  	<h4>A tutaj opis</h4>
+		  	{% lorem 2 p %}		  	
+		  </div>
+
+		</div>
+
+	</div>
+{% endblock %}

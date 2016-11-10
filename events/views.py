@@ -13,6 +13,12 @@ def index(request):
 	return HttpResponse(template.render(context, request))
 
 
+def about(request):
+	template = loader.get_template('events/about.html')
+	context = {}
+	return HttpResponse(template.render(context, request))	
+
+
 def mainMap(request):
 	# zapytania do bazy danych
 	all_events = MusicEvents.objects.all()
