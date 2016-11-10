@@ -8,6 +8,14 @@
 	Mapa główna - zawiera wszystkie wydarzenia muzyczne.
 {% endblock %}
 
+{% block nav-map-class %}
+	class="active"
+{% endblock %}
+
+{% block nav-details %}
+	class="nav-link disabled"
+{% endblock %}
+
 {% block wczytywanieMarkerow %}
 	{# dodawanie znacznikow #}
 	{% if all_events %}
@@ -18,18 +26,48 @@
 {% endblock %}
 
 {% block content %}
-	<h2>Lista wydarzeń:</h2>
-	<p>{% for band in distinct_band %}
-    	<a href="/details/band/{{band.title}}">[ {{band.title}} ]</a>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Lista artystów</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
+	  	<p>{% for band in distinct_band %}
+			<a href="/details/band/{{band.artist}}">[ {{band.artist}} ]</a>
 	{% endfor %}</p>
-
-	<h2>Lista miast:</h2>
-	<p>{% for city in distinct_city %}
-    	<a href="/details/city/{{city.city}}">[ {{ city.city }} ]</a>
-	{% endfor %}</p>
-
-	<h2>Lista krajów:</h2>
-	<p>{% for country in distinct_country %}
+	  </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Lista miast</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">
+		<p>{% for city in distinct_city %}
+			<a href="/details/city/{{city.city}}">[ {{ city.city }} ]</a>
+		{% endfor %}</p></div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+        Lista krajów</a>
+      </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body"><p>{% for country in distinct_country %}
     	<a href="/details/country/{{country.country}}">[ {{ country.country }} ]</a>
-	{% endfor %}</p>
+	{% endfor %}</p></div>
+    </div>
+  </div>
+</div>
 {% endblock %}

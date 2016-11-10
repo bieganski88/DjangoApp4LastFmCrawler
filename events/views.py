@@ -18,7 +18,7 @@ def mainMap(request):
 	all_events = MusicEvents.objects.all()
 	distinct_city = MusicEvents.objects.values('city').distinct()
 	distinct_country = MusicEvents.objects.values('country').distinct()
-	distinct_band = MusicEvents.objects.values('title').distinct()
+	distinct_band = MusicEvents.objects.values('artist').distinct()
 
 	template = loader.get_template('events/mainMap.html')
 	context = {

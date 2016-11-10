@@ -9,6 +9,7 @@ class MusicEvents(models.Model):
 	'''
 	Glowna tabela na informacje o wydarzeniach muzycznych.
 	'''
+	artist = models.CharField(max_length=50, null=True)
 	title = models.CharField(max_length=50)
 	event_date = models.CharField(max_length=25)
 	lineup = models.TextField()

@@ -9,18 +9,15 @@
 
 		<div class= "row">
 			<ul class="nav nav-tabs">
-				<li>
-				  <a href="/../../">Strona startowa</a>
+				<li><a href="/../../">Strona startowa</a></li>
+				<li><a href="/../../listOfEvents">Spis koncertów</a></li>
+				<li {% block nav-map-class %}{% endblock %}>
+					<a href= {% block nav-map-href %}"#"{% endblock %}>Mapa wydarzeń</a>
 				</li>
-				<li>
-				  <a href="/../../listOfEvents">Spis koncertów</a>
+				<li {% block nav-details %}{% endblock %}>
+					<a href="#">Widok szczegółowy</a>
 				</li>
-				<li class="active">
-				  <a href="#">Mapa wydarzeń</a>
-				</li>
-				<li>
-				  <a href="#">O autorze</a>
-				</li>
+				<li><a href="#">O autorze</a></li>
 			</ul>
 		</div>
 
