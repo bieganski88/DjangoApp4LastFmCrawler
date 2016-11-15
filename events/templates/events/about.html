@@ -8,27 +8,38 @@
 	<div class="container">
 
 		<div class= "row">
-			<ul class="nav nav-tabs">
-				<li ><a href="/../../">Strona startowa</a></li>
-				<li><a href="/../../listOfEvents">Spis koncertów</a></li>
-				<li><a href="/../../mainMap">Mapa wydarzeń</a></li>
-				<li class="nav-link disabled"><a href="#">Widok szczegółowy</a></li>
-				<li class="active"><a href="#">O autorze</a></li>
-			</ul>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+			 			<a class="navbar-brand" href="#">PERSONALIZOWANA MAPA KONCERTOWA</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li ><a href="/../../">Strona startowa</a></li>
+						<li><a href="/../../listOfEvents">Spis koncertów</a></li>
+						<li><a href="/../../mainMap">Mapa wydarzeń</a></li>
+						<li class="nav-link disabled"><a href="#">Widok szczegółowy</a></li>
+						<li class="active"><a href="#">O autorze</a></li>
+					</ul>
+				</div>
+			</nav>
 		</div>
 		
 		<div class= "row">
 			<div class="page-header">
-				<h3>PERSONALIZOWANA MAPA KONCERTOWA</h3>
-				<small>Informacje o autorze strony.</small>
+				<h3>ABOUT</h3>
+				<p>Informacje o stronie || Informacje o autorze</p>
 			</div>
 		</div>
 
 		<div class="row">
-		  <div class="col-sm-6">
+		  <div class="col-sm-1"></div>
+
+		  <div class="col-sm-4">
 		  	<h4>Tu bedzie zdjęcie</h4>
 		  	{% lorem 1 p %}
 		  </div>
+
+		  <div class="col-sm-1"></div>
 
 		  <div class="col-sm-6">
 		  	<h4>A tutaj opis</h4>

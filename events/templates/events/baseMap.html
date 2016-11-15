@@ -8,28 +8,27 @@
 	<div class="container">
 
 		<div class= "row">
-			<ul class="nav nav-tabs">
-				<li><a href="/../../">Strona startowa</a></li>
-				<li><a href="/../../listOfEvents">Spis koncertów</a></li>
-				<li {% block nav-map-class %}{% endblock %}>
-					<a href= {% block nav-map-href %}"#"{% endblock %}>Mapa wydarzeń</a>
-				</li>
-				<li {% block nav-details %}{% endblock %}>
-					<a href="#">Widok szczegółowy</a>
-				</li>
-				<li><a href="/../../about">O autorze</a></li>
-			</ul>
-		</div>
-
-		<div class="page-header">
-			<h3>PERSONALIZOWANA MAPA KONCERTOWA</h3>
-			<small>{% block subtitle %} Podtytuł {% endblock %}</small>
+			<nav class="navbar navbar-default">
+  				<div class="container-fluid">
+					<div class="navbar-header">
+		     			<a class="navbar-brand" href="#">PERSONALIZOWANA MAPA KONCERTOWA</a>
+		    		</div>
+					<ul class="nav navbar-nav">
+						<li><a href="/../../">Strona startowa</a></li>
+						<li><a href="/../../listOfEvents">Spis koncertów</a></li>
+						<li {% block nav-map-class %}{% endblock %}>
+							<a href= {% block nav-map-href %}"#"{% endblock %}>Mapa wydarzeń</a>
+						</li>
+						<li {% block nav-details %}{% endblock %}>
+							<a href="#">Widok szczegółowy</a>
+						</li>
+						<li><a href="/../../about">O autorze</a></li>
+					</ul>
+				</div>
+			</nav>
 		</div>
 
 		<div class="row">
-			{# laduje obiekt mapy leaflet #}
-			<div class="col-sm-6 col-xs-12" id="mapid" style="height: 70%"></div>
-			{% include "events/sub_loadmap.html" %} 
 
 			<script>
 			var markerClusters = L.markerClusterGroup();
@@ -38,7 +37,11 @@
 			{% block wczytywanieMarkerow %}
 			{% endblock %}
 
-			<div class="pre-scrollable col-sm-6 col-xs-12" style="max-height: 70%">
+			{# laduje obiekt mapy leaflet #}
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="mapid" style="height: 55%"></div>
+			{% include "events/sub_loadmap.html" %} 
+
+			<div class="pre-scrollable col-lg-12 col-md-12 col-sm-12 col-xs-12" style="max-height: 30%">
 				{% block content %}
 					<h2>Treść, treść, treść..</h2>
 					{% lorem 3 p %}
@@ -49,6 +52,29 @@
 
 	<script>
 		mymap.addLayer(markerClusters);
+		mymap.fitBounds(markerClusters.getBounds())
+	</script>
+
+	{% block subtitle %}
+		<script>
+			var subtitle = 'Podtytuł';
+		</script>
+	{% endblock %}
+
+	<script>
+		// control that shows state info on hover
+		var info = L.control();
+
+		info.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'info');
+			this.update();
+			return this._div;
+		};
+
+		info.update = function (props) {
+			this._div.innerHTML = '<h4>' + subtitle + '</h4>';
+		}
+		info.addTo(mymap);
 	</script>
 
 {% endblock %}

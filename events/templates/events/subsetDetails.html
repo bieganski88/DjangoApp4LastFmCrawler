@@ -12,8 +12,11 @@
 	"/../../mainMap"
 {% endblock %}
 
+
 {% block subtitle %}
-	Rezultat filtrowania - zawiera wybrane wydarzenia muzyczne dla {{value}}.
+	<script>
+		var subtitle = 'Rezultat filtrowania: {{value}}';
+	</script>
 {% endblock %}
 
 {% block content %}

@@ -5,3 +5,5 @@ font-weight: lighter;
 }
 
 body { padding-top: 10px; }
+
+.page-header { margin-top: 0; }
