@@ -31,16 +31,20 @@
 		</div>
 		
 		<div class= "row">
-			<div class="page-header">
+			<div class="page-header" style="margin-left: 2%">
 				<h3>ABOUT</h3>
-				<p>Informacje o stronie || Informacje o autorze</p>
+				<p>...czyli trochę o sobie, troche o aplikacji oraz wykorzystywanej technologii.</p>
 			</div>
+		</div>
+
+		<div class= "row">
+			<div class="well well-sm"><STRONG>O AUTORZE</STRONG></div>
 		</div>
 
 		<div class="row">
 
 
-			<div class="col-md-6">			
+			<div class="col-sm-6">			
 				<div class="thumbnail">
 				    <img  class="img-responsive" src="/static/events/image/gruzja_compressor.png" alt="Przemyslaw Bieganski - Gruzja 2016">
 				    <div class="caption">
@@ -53,9 +57,8 @@
 				</div>
 			</div>
 
-		  <div class="col-md-6">
-		  	<div class="well well-sm"><STRONG>O AUTORZE</STRONG></div>
-			<p>Przemysław Biegański - jestem absolwentem kierunku Geoinformatyka na Uniwersytecie Przyrodniczym we Wrocławiu (2007-2012). Aktualnie mieszkający również we Wrocławiu. Od zakończenia studiów aż do teraz związany z branżą GIS (ang. Geographic Information System). Obecnie intensywnie rozwijam się w dziedzinie programowania w Pythonie/Django, chętnie przyswoje również wiedzę z obszaru data mining/ machine learning.</p>
+		  <div class="col-sm-6">
+			<p>Przemysław Biegański - jestem absolwentem kierunku Geoinformatyka na Uniwersytecie Przyrodniczym we Wrocławiu (2007-2012). Aktualnie mieszkający również we Wrocławiu. Od zakończenia studiów aż do teraz związany z branżą GIS (ang. Geographic Information System). Obecnie intensywnie rozwijam się w dziedzinie programowania w Pythonie/Django, w przyszłości planuję również przyswoić nieco wiedzy z obszaru data mining/ machine learning.</p>
 
 			<p>Niniejszy projekt zakładał opracowanie kompletnego procesu od pozyskania danych, delikatnego wyczyszczenia (tak aby mogły zostać upchane w strukturę tabelaryczną), nadaniu im geometrii, a skończywszy na prezentacji rezultatów na stronie internetowej. Jest to pierwszy tak kompleksowy projekt mojego autorstwa.</p>
 
@@ -97,7 +100,20 @@
 
 			<div class="col-md-6">
 				<div class="well well-sm"><STRONG>OPRACOWANIE WEB APLIKACJI</STRONG></div>
-				{% lorem 4 p %}		  	
+
+				<p>Jeśli chodzi o aplikację webową to zważywszy na fakt, że orinetuje się całkiem dobrze w Pythonie, wybór wydał mi się dość oczywisty i padło na Django (django 1.10 oraz python 2.7.11 ::Anaconda 2.1.0).</p>
+
+				<p>Do stworzenia modułu mapowego wykorzystałem biblioteki JavaScript Leaflet. Model Django jest dość prosty i nie przechowuje tak naprawdę, żadnych typów geometrycznych, a jedynie współrzędne w postaci liczb zmiennoprzecinkowych, natomiast za prawidłową ich interpretacje odpowiada już właśnie Leaflet. W przypadku wielu znaczników rozlokowanych na małym obszarze bądź referujących na te same współrzędne istotnym problemem jest brak czytelności oraz nakładanie się obiektów. Z pomocą przyszedł plugin do Leafleta o nazwie Marker Cluster. Małym nakładem sił pozwolił uzyskać miły dla oka clustering.</p>
+
+				<p>Jako, że niespecjalnie się lubię z JS oraz CSS starałem się raczej korzystać z już gotowych wzorców niż pisać coś od postaw - skorzystałem z Bootstrapa, wraz z rozszerzeniem DataTables dla danych tabelarycznych.</p>
+
+				<p>Krótki przewodnik po stronce w filmie poniżej.</p>
+
+				<h2>Przykładowe wideo</h2>
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/b4epPvyqwwM"></iframe>
+				</div>
+
 			</div>
 
 		</div>
