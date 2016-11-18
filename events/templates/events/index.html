@@ -37,20 +37,40 @@
 	</div>
 
 	<div class="row">
-	  <div class="col-sm-4">
-	  	<h4>Spis koncertów</h4>
-	  	{% lorem 1 p %}
+	  <div class="col-md-4 col-sm-6">
+		<div class="thumbnail">
+			<img src="/static/events/image/lista.png" alt="...">
+			<div class="caption">
+				<h3>Przejrzyj listę dostepnych koncertów</h3>
+				<p>Zapoznaj się z załadowanymi danymi. Wyświetl dane koncertowe w przestepnej formie tabelarycznej.
+Istnieje możliwość sortowania wyników w kolumnach oraz wyszukiwarnia po zadanej frazie. Wskaż interesującą encję aby wyświetlić ją na mapie.</p>
+				<p><a href="/../../listOfEvents" class="btn btn-primary" role="button">więcej..</a></p>
+			</div>
+		</div>
 	  </div>
 
-	  <div class="col-sm-4">
-	  	<h4>Mapa wydarzen</h4>
-	  	{% lorem 1 p %}		  	
+	  <div class="col-md-4 col-sm-6">
+		<div class="thumbnail">
+			<img src="/static/events/image/mapa.png" alt="...">
+			<div class="caption">
+				<h3>Wyświetl wydarzenia na mapie</h3>
+				<p>Interaktywna mapa prezentująca koncerty w postaci markerów na mapie. Przechodząc do widoku szczegółowego wyświetlić można wyniki ograniczone do wybranego zespolu, miasta, kraju, czy też daty. W celu zwiększenia czytelności zastosowano elegancji clustering.</p>
+				<p><a href="/../../mainMap" class="btn btn-primary" role="button">więcej..</a></p>
+			</div>
+		</div>
 	  </div>
 
-	  <div class="col-sm-4">
-	  	<h4>O autorze</h4>
-	  	{% lorem 1 p %}
+	  <div class="col-md-4 col-sm-6">
+		<div class="thumbnail">
+			<img src="/static/events/image/about.png" alt="...">
+			<div class="caption">
+				<h3>Poznaj autora oraz wykorzystaną technologię</h3>
+				<p>Kilka zdań na temat autora aplikacji, procesu jej opracowania, wykorzystanych technologii.
+W jaki sposób można pobrać własne dane, aby mapa prezentowała koncerty zespołów, które nas interesują.</p>
+				<p><a href="/../../about" class="btn btn-primary" role="button">więcej..</a></p>
+			</div>
+		</div>
 	  </div>
 	</div>
-	</div>
+</div>
 {% endblock %}
