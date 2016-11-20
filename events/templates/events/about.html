@@ -57,7 +57,7 @@
 				</div>
 			</div>
 
-		  <div class="col-sm-6">
+		  <div class="col-sm-6 text-justify">
 			<p>Przemysław Biegański - jestem absolwentem kierunku Geoinformatyka na Uniwersytecie Przyrodniczym we Wrocławiu (2007-2012). Aktualnie mieszkający również we Wrocławiu. Od zakończenia studiów aż do teraz związany z branżą GIS (ang. Geographic Information System). Obecnie intensywnie rozwijam się w dziedzinie programowania w Pythonie/Django, w przyszłości planuję również przyswoić nieco wiedzy z obszaru data mining/ machine learning.</p>
 
 			<p>Niniejszy projekt zakładał opracowanie kompletnego procesu od pozyskania danych, delikatnego wyczyszczenia (tak aby mogły zostać upchane w strukturę tabelaryczną), nadaniu im geometrii, a skończywszy na prezentacji rezultatów na stronie internetowej. Jest to pierwszy tak kompleksowy projekt mojego autorstwa.</p>
@@ -73,16 +73,15 @@
 
 		<div class = "row">
 
-			<div class="col-md-6">
+			<div class="col-md-6 text-justify">
 				<div class="well well-sm"><STRONG>PROCES POZYSKANIA DANYCH</STRONG></div>
 
 				<p>Portalem internetowym w oparciu o który bazuję w kwestii wyszukiwania danych o koncertach jest Last.Fm. Być może traci obecnie na znaczeniu jako zpersonalizowane radio, aczkolwiek niezmiennie jest olbrzymią encyklopedią na temat zespołów, wydarzeń muzycznych, dodatkowo przechowuje informację o przesłuchanych utworach przez każdego z zarejestrowanych użytkowników.</p>
 
 				<p>Napisałem specjalny moduł Pythona, za pomocą którego dobierzemy się do wartościowych z naszego punktu widzenia informacji (de facto jest to robot internetowy). Oczywiście najwięcej skorzystają osoby, które posiadają tam konto, a ich biblioteka jest dość bogata. Możliwości oraz sposób obsługi modułu zostały przedstawione w poniższym filmiku, aczkolwiek wypiszę je również poniżej.</p>
 
-				<h2>Przykładowe wideo</h2>
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/b4epPvyqwwM"></iframe>
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/b4epPvyqwwxxM"></iframe>
 				</div>
 
 				<p>Trzy główne klasy:
@@ -90,7 +89,7 @@
 						<li>Band - w oparciu o nazwę wykonawcy pobieranie informacji o planowanych koncertach oraz
 						najpopularniejszych tagach opisujących artystę. Można pobrać informację o koncertach dla całej przygotowanej listy wykonawców zapisanej w postaci pliku JSON.</li>
 
-						<li>LastFmUser - w oparciu o nazwe użytkownika Last Fm możemy wyszukać oraz nastepnie pobrac informacje o przesłuchanych utworach (mogą posłużyć jako baza dla ciekawego data miningu) oraz zarówno najpopularniejszych atrystach, jak i tych których intensywnie zaczeliśmy słuchać dopiero ostatnio. A następnie zautomatyzowane pobieranie informacji koncertowych dla tych atrystów. Przykłądowo deklarujemy, że chcemy wyszukać wydarzenia w których udział bierze TOP100 naszych wykonawców albo Ci najczęsciej puszczani z ostatnich 7/30/90/180 dni.. :)</li>
+						<li>LastFmUser - w oparciu o nazwe użytkownika Last Fm możemy wyszukać oraz nastepnie pobrac informacje o przesłuchanych utworach (mogą posłużyć jako baza dla ciekawego data miningu) oraz zarówno najpopularniejszych atrystach, jak i tych których intensywnie zaczeliśmy słuchać dopiero ostatnio. A następnie zautomatyzowane pobieranie informacji koncertowych dla tych atrystów. Przykładowo deklarujemy, że chcemy wyszukać wydarzenia w których udział bierze TOP100 naszych wykonawców albo Ci najczęsciej puszczani z ostatnich 7/30/90/180 dni.. :)</li>
 
 						<li>Geocoder - geokodowanie opisowych danych adresowych z dokładnością co do miasta,
 						tak aby wyświetlić dane na mapie. Eksport do GeoJSON oraz bezpośrednio do odpalonej lokalnie bazy zasilającej aplikację Django.</li>
@@ -98,21 +97,34 @@
 				</p> 	
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6 text-justify">
 				<div class="well well-sm"><STRONG>OPRACOWANIE WEB APLIKACJI</STRONG></div>
 
-				<p>Jeśli chodzi o aplikację webową to zważywszy na fakt, że orinetuje się całkiem dobrze w Pythonie, wybór wydał mi się dość oczywisty i padło na Django (django 1.10 oraz python 2.7.11 ::Anaconda 2.1.0).</p>
+				<p>Jeśli chodzi o aplikację webową to zważywszy na fakt, że orinetuje się całkiem dobrze w Pythonie, wybór wydał mi się dość oczywisty i padło na Django (django 1.10<sup>[1]</sup> oraz python 2.7.11 ::Anaconda<sup>[2]</sup>).</p>
 
-				<p>Do stworzenia modułu mapowego wykorzystałem biblioteki JavaScript Leaflet. Model Django jest dość prosty i nie przechowuje tak naprawdę, żadnych typów geometrycznych, a jedynie współrzędne w postaci liczb zmiennoprzecinkowych, natomiast za prawidłową ich interpretacje odpowiada już właśnie Leaflet. W przypadku wielu znaczników rozlokowanych na małym obszarze bądź referujących na te same współrzędne istotnym problemem jest brak czytelności oraz nakładanie się obiektów. Z pomocą przyszedł plugin do Leafleta o nazwie Marker Cluster. Małym nakładem sił pozwolił uzyskać miły dla oka clustering.</p>
+				<p>Do stworzenia modułu mapowego wykorzystałem biblioteki JavaScript Leaflet<sup>[3]</sup>. Model Django jest dość prosty i nie przechowuje tak naprawdę, żadnych typów geometrycznych, a jedynie współrzędne w postaci liczb zmiennoprzecinkowych, natomiast za prawidłową ich interpretacje odpowiada już właśnie Leaflet. W przypadku wielu znaczników rozlokowanych na małym obszarze bądź referujących na te same współrzędne istotnym problemem jest brak czytelności oraz nakładanie się obiektów. Z pomocą przyszedł plugin do Leafleta o nazwie Marker Cluster<sup>[4]</sup>. Małym nakładem sił pozwolił uzyskać miły dla oka clustering.</p>
 
-				<p>Jako, że niespecjalnie się lubię z JS oraz CSS starałem się raczej korzystać z już gotowych wzorców niż pisać coś od postaw - skorzystałem z Bootstrapa, wraz z rozszerzeniem DataTables dla danych tabelarycznych.</p>
+				<p>Jesli chodzi o frontend to starałem się raczej korzystać z już gotowych wzorców niż pisać coś od postaw - skorzystałem z Bootstrapa<sup>[5]</sup> wraz z rozszerzeniem jQuery DataTables<sup>[6]</sup> dla danych tabelarycznych.</p>
 
 				<p>Krótki przewodnik po stronce w filmie poniżej.</p>
 
-				<h2>Przykładowe wideo</h2>
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/b4epPvyqwwM"></iframe>
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/b4epPvyqwwMzzzs"></iframe>
 				</div>
+
+				<hr>
+
+				<div class="well well-sm"><STRONG>Linki:</STRONG></div>
+
+				<ol style="list-style: decimal inside;">
+					<li>Django 1.10 >> <a href="https://www.djangoproject.com/">www.djangoproject.com</a></li>
+					<li>Anaconda_Pythob_IDE >> <a href="https://www.continuum.io/anaconda-overview">www.continuum.io/anaconda</a></li>
+					<li>Leaflet >> <a href="http://leafletjs.com/">http://leafletjs.com/</a></li>
+					<li>MarkerCluster >> <a href="https://github.com/Leaflet/Leaflet.markercluster">github.com/Leaflet/Leaflet.markercluster</a></li>
+					<li>Bootstrap >> <a href="http://getbootstrap.com/">getbootstrap.com/</a></li>
+					<li>Data Tables >> <a href="https://datatables.net/">datatables.net/</a></li>
+				</ol>
+
 
 			</div>
 
