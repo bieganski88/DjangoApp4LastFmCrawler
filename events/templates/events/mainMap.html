@@ -56,7 +56,9 @@
     <div id="collapse2" class="panel-collapse collapse">
       <div class="panel-body">
 		<p>{% for city in distinct_city %}
-			<a href="/details/city/{{city.city}}">[ {{ city.city }} ]</a>
+      {% if city.city != "" %}
+         <a href="/details/city/{{city.city}}">[ {{ city.city }} ]</a>
+      {% endif %}
 		{% endfor %}</p></div>
     </div>
   </div>
