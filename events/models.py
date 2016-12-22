@@ -10,7 +10,7 @@ from django.db import models
 @python_2_unicode_compatible  # WOW! naprawde istotne
 class MusicEvents(models.Model):
     '''
-    Glowna tabela na informacje o wydarzeniach muzycznych.
+    Main table for music events.
     '''
     artist = models.CharField(max_length=50, null=True)
     title = models.CharField(max_length=50)

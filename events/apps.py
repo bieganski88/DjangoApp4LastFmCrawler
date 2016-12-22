@@ -8,5 +8,5 @@ from django.apps import AppConfig
 
 
 class EventsConfig(AppConfig):
-    """Spis wykorzystywanych aplikacji"""
+    """List of all apps"""
     name = 'events'

@@ -11,22 +11,22 @@ from .models import MusicEvents
 
 
 def index(request):
-    """Strona startowa."""
+    """Start page."""
     template = loader.get_template('events/index.html')
     context = {}
     return HttpResponse(template.render(context, request))
 
 
 def about(request):
-    """Strona o autorze"""
+    """About page"""
     template = loader.get_template('events/about.html')
     context = {}
     return HttpResponse(template.render(context, request))
 
 
 def main_map(request):
-    """Glowna mapa - wyswietla wszystkie obiekty"""
-	# zapytania do bazy danych
+    """Main map - display all features"""
+	# database queries
     all_events = MusicEvents.objects.all()
     distinct_city = MusicEvents.objects.values('city').distinct().order_by('city')
     distinct_country = MusicEvents.objects.values('country').distinct().order_by('country')
@@ -42,7 +42,7 @@ def main_map(request):
 
 
 def list_of_events(request):
-    """Tabela z wszystkimi wydarzeniami"""
+    """Table with all events"""
     all_events = MusicEvents.objects.all()
     template = loader.get_template('events/listOfEvents.html')
     context = {
@@ -52,7 +52,7 @@ def list_of_events(request):
 
 
 def details_view(request, category, value):
-    """Mapa - widok szczegolowy."""
+    """Map - selection view."""
     all_events = MusicEvents.objects.all()
     category_list = ['band', 'city', 'country', 'place', 'byDate']
     template = loader.get_template('events/subsetDetails.html')

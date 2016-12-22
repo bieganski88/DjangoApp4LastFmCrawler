@@ -8,7 +8,7 @@
 		{% endblock %}
 		<meta charset="utf-8" />
 
-		{# ladowanie leaflet #}
+		{# django loads leaflet #}
 		{% leaflet_js %}
 	    {% leaflet_css %}
 
@@ -20,11 +20,12 @@
 	    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
 	    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
 
-	    {# ladowanie bootstrapa #}
+	    {# bootstrap #}
 	    <link rel="stylesheet" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css">
 	    <script src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
 
 	    <link rel="stylesheet" href="/static/events/table.css">
+
 		{% block extraHead %}
 		{% endblock %}
 	</head>

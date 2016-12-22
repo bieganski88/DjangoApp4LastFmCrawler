@@ -18,8 +18,7 @@
 	class="nav-link disabled"
 {% endblock %}
 
-{% block wczytywanieMarkerow %}
-	{# dodawanie znacznikow #}
+{% block markersLoading %}
 	{% if all_events %}
 		{% for concert in all_events %}
 			{% include "events/sub_addmarker.html" %} 
